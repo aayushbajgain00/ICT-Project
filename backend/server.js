@@ -4,7 +4,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import bodyParser from "body-parser";
 import BotRoutes from "./routes/botRoutes.js"
-
+import userRoutes from "./routes/userRoutes.js"
 
 
 // const {createBot} = require("../backend/controller/botcontroller")
@@ -14,6 +14,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(bodyParser.json());
+
 
 // Example route
 
@@ -27,6 +28,7 @@ const MongoURI="mongodb+srv://985173_db_user:k09rX6a7JiqQAZyd@meetwise.sstjbaa.m
 // }
 
 app.use("/bots", BotRoutes)
+app.use("/api/user", userRoutes);
 
 // MongoDB connection
 mongoose.connect(MongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
